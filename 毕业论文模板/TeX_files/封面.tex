@@ -1,0 +1,43 @@
+%封面中的自定义字体设置
+\newcommand{\zihaosi}{\fontsize{12pt}{14.4pt}\selectfont}
+\newcommand{\zihaoxiaosan}{\fontsize{15pt}{18pt}\selectfont}
+\newcommand{\zihaowu}{\fontsize{11pt}{12pt}\selectfont}
+\newcommand{\Roma}[1]{{\underline{\makebox[13cm]{\fontspec{Times New Roman}#1}}}}
+\newcommand{\Kaishua}[1]{\underline{\makebox[13cm]{\kaishu \bfseries #1}}}
+\newcommand{\Kaishub}[1]{\underline{\makebox[7cm]{\kaishu \bfseries #1}}}
+
+
+	\clearpage
+	\bgroup
+	\parindent 0em
+	\thispagestyle{empty}
+	\zihaowu
+	
+	\vspace*{1.5cm}
+\begin{center}
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[scale=0.3]{Jilin University.jpg}
+		\end{figure}
+	    \zihao{-0}{\textbf{本科生毕业论文（设计）} }
+		 \vskip 20mm
+
+\vbox to 40mm{
+	\zihaoxiaosan
+	\baselineskip 30pt
+\textbf{\heiti{中文题目：}}\Kaishua{XXX}\\[1ex] 
+\textbf{\heiti{英文题目：}}\Roma{XXX}\\[2ex] 
+\vss}
+
+\vskip 1.5cm
+\zihaoxiaosan
+\textbf{\heiti{学生姓名：}}\Kaishub{XXX}\\[1ex] 
+\textbf{\heiti{学\hskip 2em 号：}}\Kaishub{XXXXXXXX}\\[1ex]
+\textbf{\heiti{学\hskip 2em 院：}}\Kaishub{XX学院}\\[1ex] 
+\textbf{\heiti{专\hskip 2em 业：}}\Kaishub{XXXX}\\[1ex] 
+\textbf{\heiti{指导教师：}}\Kaishub{XX \quad 教 授}\\[1ex] 
+
+
+\vfill % 将日期推到页脚
+\textbf{2024年5月}
+\end{center}

@@ -1,0 +1,19 @@
+
+\pagestyle{empty} 
+\fancypagestyle{plain}{
+	\fancyhf{}  % 清空页眉和页脚
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+% 设置目录
+\setcounter{tocdepth}{2}
+
+\tableofcontents % 插入目录
+\clearpage  % 确保页码设置在目录完全结束后更改
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[C]{$\cdot$\thepage$\cdot$}  % 恢复页脚页码
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{fancy}  % 恢复到正常的页眉页脚样式

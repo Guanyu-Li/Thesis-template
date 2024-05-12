@@ -1,0 +1,91 @@
+\documentclass[12pt,reqno]{report}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage[UTF8]{ctex}
+\usepackage{xeCJK} % 添加 xeCJK 宏包以使用中文数字
+\usepackage{fontspec} 
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage[ruled,linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{geometry}
+\geometry{a4paper, total={170mm,257mm}, left=20mm, top=20mm}
+\usepackage{graphicx,cases}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{braket}
+\usepackage{amsmath, amssymb, mathrsfs, amsthm}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{xpatch}
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\addbibresource{refer.bib} % 指定引用的.bib文件
+\usepackage{fancyhdr}
+
+% 自定义章节标题格式
+\usepackage{titlesec}
+\titleformat{\chapter}{\centering\normalfont\huge\bfseries}{第\ \thechapter\ 章}{20pt}{\huge}
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thechapter.\thesection}{1em}{\Large}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thechapter.\thesubsection}{1em}
+{}
+\renewcommand\thechapter{\arabic{chapter}} % 设置章标题为中文数字
+\renewcommand\thesection{\arabic{section}} % 设置章标题为阿拉伯数字
+\newcounter{romanpage}
+
+% 定义定理环境
+\newtheorem{theorem}{\hspace{2em} 定理}[section] 
+\newtheorem{definition}[theorem]{\hspace{2em} 定义}
+\newtheorem{lemma}[theorem]{\hspace{2em} 引理} 
+\newtheorem{corollary}[theorem]{\hspace{2em} 推论} 
+\newtheorem{example}[theorem]{\hspace{2em} 例}
+\newtheorem{property}{\hspace{2em} 性质}
+%把定理后面的点去掉
+\makeatletter
+\AtBeginDocument{\xpatchcmd{\cref@thmoptarg}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
+\AtBeginDocument{\xpatchcmd{\cref@thmnoarg}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
+\makeatother
+
+\renewcommand{\proofname}{\bfseries\upshape 证明\nopunct}
+\newcounter{methodcount}[section] % 方法环境的计数器
+\newtheorem{method}[methodcount]{\hspace{2em} 方法} % 方法环境的样式
+\renewcommand\themethodcount{\chinese{methodcount}} % 方法环境的编号格式
+\renewcommand\theexample{\arabic{section}.\arabic{example}}
+\renewcommand\thetheorem{\arabic{section}.\arabic{theorem}} 
+\renewcommand\thedefinition{\arabic{section}.\arabic{definition}} 
+\crefname{theorem}{\textbf{定理}}{定理}
+\crefname{lemma}{\textbf{引理}}{引理}
+\crefname{example}{\textbf{例}}{例}
+\crefname{definition}{定义}{定义}
+\crefname{algorithm}{算法}{算法}
+\crefformat{equation}{#2(#1)式#3}
+
+% 自定义定理样式，包括标题和后面的序号都加粗
+\newtheoremstyle{boldtheorem}{1em}{1em}{}{}{\normalfont}{}{1em}{{\thmname{#1}\ \thmnumber{\hspace{2em}#2}}}
+\theoremstyle{boldtheorem}
+\renewcommand{\theequation}{\ifnum\value{subsection}>0\relax\thesubsection.\else\thesection.\fi\arabic{equation}}
+% 定义公式编号的格式
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+%设置页眉
+\fancyhf{}  % 清空页眉和页脚
+\fancyhead[C]{\leftmark}  % 在页眉中间显示章节名称
+\renewcommand{\chaptermark}[1]{\markboth{第 \thechapter 章\quad #1}{}}  % 调整章节标题的显示格式
+\renewcommand{\headrulewidth}{0.4pt}  % 页眉下方横线宽度
+
+\begin{document}
+   \include{./TeX_files/封面}
+   \pagenumbering{Roman} % 设置页面编号为大写罗马数字
+   \include{./TeX_files/摘要}
+   \setcounter{romanpage}{\value{page}}%罗马数字页码计数
+   \include{./TeX_files/目录}
+   \pagenumbering{arabic} % 正文开始，设置页面编号为阿拉伯数字
+   % 设置1.5倍行间距
+   \begin{spacing}{1.5}
+   \include{./TeX_files/绪论}
+   \include{./TeX_files/文章主体}
+   \end{spacing}
+   \include{./TeX_files/参考文献}
+   \pagenumbering{Roman} % 设置页面编号为大写罗马数字
+   \setcounter{page}{\value{romanpage}}  % 设置页码继续摘要后的罗马数字页码
+   \include{./TeX_files/致谢}
+\end{document}
