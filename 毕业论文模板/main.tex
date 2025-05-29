@@ -26,11 +26,11 @@
 % 自定义章节标题格式
 \usepackage{titlesec}
 \titleformat{\chapter}{\centering\normalfont\huge\bfseries}{第\ \thechapter\ 章}{20pt}{\huge}
-\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thechapter.\thesection}{1em}{\Large}
-\titleformat{\subsection}{\normalfont\large\bfseries}{\thechapter.\thesubsection}{1em}
-{}
-\renewcommand\thechapter{\arabic{chapter}} % 设置章标题为中文数字
-\renewcommand\thesection{\arabic{section}} % 设置章标题为阿拉伯数字
+\titleformat{\section}{\centering\normalfont\Large\bfseries}{\thesection}{1em}{\Large}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\renewcommand\thechapter{\arabic{chapter}}
+\renewcommand\thesection{\thechapter.\arabic{section}} 
+\renewcommand\thesubsection{\thesection.\arabic{subsection}} 
 \newcounter{romanpage}
 
 % 定义定理环境
